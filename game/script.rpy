@@ -650,6 +650,7 @@ label start:
         "But this? Whatever was walking in the house now… was {i}not{/i} Cole."
         "Akira’s breath hitches. You clamp a hand over your mouth before the gasp even has a change to escape-- because you can hear it. The footsteps— they’re growing closer."
         "Each step seems to bend reality around itself, warping the silence until you were almost choking on it. Tears pricked at the corners of your eyes."
+        stop sound
         "The steps pause just outside the closet. Your heart hammers so hard she’s sure it can be heard. You press your forehead to Akira’s shoulder. You start to hold your breath."
 
         # HEARTBEAT MINIGAME
