@@ -2,8 +2,8 @@ init python:
     heart_spawn_min = 1.2
     heart_spawn_max = 1.21
     heart_success_range = 200
-    heart_speed = 8
-    heart_time = 60.0
+    heart_speed = 6
+    heart_time = 15.0
 
     def check_image_pos(hearts, check_left):
         global total_good
@@ -64,6 +64,10 @@ init python:
     def randomize_heart_rate():
         heartdelay = renpy.random.uniform(heart_spawn_min, heart_spawn_max)
 
+    def update_game_time():
+        global time_elapsed
+        global total_bad
+        time_elapsed += 0.1
 
     class MovingHeart:
         def __init__(self, x, move_left):
@@ -78,18 +82,28 @@ label heartgame:
 
     show screen spawnhearts
     show screen tickhearts
+    show screen gametime
     call screen heartimages
 
-    mi talk "Good = [total_good] | Bad = [total_bad]"
-
+    hide screen gametime
     hide screen tickhearts
     hide screen spawnhearts
     return total_bad <= 0
+
+label losegame:
+    my talk "You died! RIP"
+    return False
 
 screen tickhearts:
     timer 0.01:
         repeat True
         action Function(tick_hearts, hearts)
+
+default time_elapsed = 0.0
+screen gametime:
+    timer 0.1:
+        repeat True
+        action Function(update_game_time)
 
 define heartdelay = 0.5
 default total_good = 0
@@ -121,4 +135,6 @@ screen heartimages:
     
     key "mouseup_1" action Function(check_image_pos, hearts, True)
     key "mouseup_3" action Function(check_image_pos, hearts, False)
-    timer heart_time action Return(0)
+
+    if (time_elapsed >= heart_time or total_bad > 5):
+        timer 0.1 action Return(0)
