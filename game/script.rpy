@@ -651,6 +651,7 @@ label chapter_1:
         "You bolt upright from your slouched position on the floor, but before either of you can get up to run out of the closet— something in the air shifts."
 
         scene black
+        play sound "audio/sfx/monster_footsteps.mp3"
         "The lights go out. And then... that's when you hear it."
         "Footsteps press against the floorboards—slow, uneven. Too heavy on one step, dragging slightly on the next, like whatever’s walking hasn’t quite learned how yet."
         "There’s a faint wet sound, a soft {i}thud—scrape—thud{/i} that doesn’t match the rhythm of a person."
