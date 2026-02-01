@@ -156,7 +156,7 @@ label start:
             jump chapter_1
         "Play Heart Minigame":
             jump heartgame
-            
+
 label chapter_1:
 
     # beginning pos
@@ -662,7 +662,12 @@ label chapter_1:
 
         # HEARTBEAT MINIGAME
 
-        play music "audio/music/heartbeat.ogg" fadein 1.0
+        play music "audio/music/heartbeat.ogg" fadein 1.0 volume 1.0
+        call heartgame # returns true if the player won the mini-game
+
+        # _return gets the return value of the heartgame
+        if (not _return):
+            return
         # if win: continue
         # win == no losses
         # if lose: return

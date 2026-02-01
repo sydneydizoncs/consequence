@@ -1,9 +1,9 @@
 init python:
-    heart_spawn_min = 1
-    heart_spawn_max = 3
-    heart_success_range = 100
-    heart_speed = 6
-    heart_time = 5.0
+    heart_spawn_min = 1.2
+    heart_spawn_max = 1.21
+    heart_success_range = 200
+    heart_speed = 8
+    heart_time = 60.0
 
     def check_image_pos(hearts, check_left):
         global total_good
@@ -51,16 +51,18 @@ init python:
         # delete hearts that have reached/passed the middle of the screen
         for heart in hearts_to_delete:
             hearts.remove(heart)
-        
-        heartdelay = renpy.random.uniform(heart_spawn_min, heart_spawn_max)
                 
     def spawn_random_heart(hearts):
-        dir = renpy.random.choice([True, False])
-        spawn_two = renpy.random.choice([True, False])
-        
-        spawn_heart(hearts, dir)
-        if (spawn_two):
-            spawn_heart(hearts, not dir)
+        if (renpy.random.choice([True, False])):
+            dir = renpy.random.choice([True, False])
+            spawn_two = renpy.random.choice([True, False])
+            
+            spawn_heart(hearts, dir)
+            if (spawn_two):
+                spawn_heart(hearts, not dir)
+
+    def randomize_heart_rate():
+        heartdelay = renpy.random.uniform(heart_spawn_min, heart_spawn_max)
 
 
     class MovingHeart:
@@ -68,11 +70,11 @@ init python:
             self.x = x
             self.move_left = move_left
         
-
+image heart_left = "images/heart_game/Heart_Left.png"
+image heart_right = "images/heart_game/Heart_Right.png"
+image heart_middle = "images/heart_game/Heart_Middle.png"
 label heartgame:
     default hearts = []
-
-    image img = "images/ui/mia serious.png"
 
     show screen spawnhearts
     show screen tickhearts
@@ -82,7 +84,7 @@ label heartgame:
 
     hide screen tickhearts
     hide screen spawnhearts
-    return
+    return total_bad <= 0
 
 screen tickhearts:
     timer 0.01:
@@ -96,15 +98,23 @@ default total_bad = 0
 screen spawnhearts:
     timer heartdelay:
         repeat True
-        action Function(spawn_random_heart, hearts)
+        action [Function(spawn_random_heart, hearts), Function(randomize_heart_rate)]
 
 screen heartimages:
     for heart in hearts:
-        add "img":
-            xpos heart.x
-            ypos 0.5
-            anchor (0.5, 0.5)
-    add "bel_happy":
+        if (heart.move_left):
+            add "heart_left":
+                xpos heart.x
+                ypos 0.5
+                anchor (0.5, 0.5)
+        else:
+            add "heart_right":
+                xpos heart.x
+                ypos 0.5
+                anchor (0.5, 0.5)
+        
+
+    add "heart_middle":
         xpos 0.5
         ypos 0.5
         anchor (0.5, 0.5)
