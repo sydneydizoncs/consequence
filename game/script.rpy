@@ -151,14 +151,6 @@ label start:
     # replace it by adding a file named "eileen happy.png" to the images
     # directory.
 
-    menu:
-        "Play Game":
-            jump chapter_1
-        "Play Heart Minigame":
-            jump heartgame
-
-label chapter_1:
-
     # beginning pos
     show akira smile at left with fade
     show myles serious at farright with fade
@@ -619,7 +611,7 @@ label chapter_1:
         c "…Nineteen!"
         scene ak04
         a "Hey, um... I'm sorry."
-        scene ak02s
+        scene ak02
         "You blink."
         mi "For what?"
         scene ak01
@@ -651,7 +643,6 @@ label chapter_1:
         "You bolt upright from your slouched position on the floor, but before either of you can get up to run out of the closet— something in the air shifts."
 
         scene black
-        play sound "audio/sfx/monster_footsteps.mp3"
         "The lights go out. And then... that's when you hear it."
         "Footsteps press against the floorboards—slow, uneven. Too heavy on one step, dragging slightly on the next, like whatever’s walking hasn’t quite learned how yet."
         "There’s a faint wet sound, a soft {i}thud—scrape—thud{/i} that doesn’t match the rhythm of a person."
@@ -663,12 +654,7 @@ label chapter_1:
 
         # HEARTBEAT MINIGAME
 
-        play music "audio/music/heartbeat.ogg" fadein 1.0 volume 1.0
-        call heartgame # returns true if the player won the mini-game
-
-        # _return gets the return value of the heartgame
-        if (not _return):
-            return
+        play music "audio/music/heartbeat.ogg" fadein 1.0
         # if win: continue
         # win == no losses
         # if lose: return
@@ -682,9 +668,23 @@ label chapter_1:
         a "A-Are you okay? What... {i}what was that{/i}?"
         scene ak11
         mi "I-I don't know, but... {i}that wasn’t Cole{/i}."
+        l "AHHHHHHH! NOOOOO--!"
+        mi "LILLIA?"
+        "Your heart dropped to your feet. Was Lillia okay?!"
+        play movie "movies/cole_body_discovery.mov"
 
+        scene black with fade
+        stop music fadeout 1.0
+        "After a quick look of panic, you and Akira bolt from the closet, racing down the hall to find Lillia."
+        "But nothing could prepare yourself for the scene that greeted you."
 
+        $ renpy.movie_cutscene("movie/final.webm")
 
+        scene bg cole
+        "Cole... was dead."
+
+        scene black with fade
+        return
 
         jump after_choice
 
