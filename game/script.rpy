@@ -151,6 +151,14 @@ label start:
     # replace it by adding a file named "eileen happy.png" to the images
     # directory.
 
+    menu:
+        "Play Game":
+            jump chapter_1
+        "Play Heart Minigame":
+            jump heartgame
+            
+label chapter_1:
+
     # beginning pos
     show akira smile at left with fade
     show myles serious at farright with fade
