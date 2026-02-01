@@ -515,7 +515,6 @@ label chapter_1:
     b "Okay, verdict. This is {i}boooring{/i}. I’m calling it."
     
     # music stop
-    stop music fadeout 1.0
     "Bel starts to pull her hand away, but before she can--"
 
     # music switch
@@ -562,6 +561,138 @@ label chapter_1:
     my "We {i}know{/i} what it spells."
     mi serious "…'HIDE'?"
     c grin "Oh my god. It wants to play 'Hide and Seek'!"
+    l serious "{i}Absolutely{/i} not!"
+    l talk "No games. We say goodbye, burn the board in the fire, and {i}never{/i} talk about this again."
+    c happy "Aw, c’mon Lils! That’s quitter talk!"
+    "Cole begins to push back his chair, rising from his seat."
+    c grin "This is awesome!"
+    mi talk "Cole, sit down."
+    c happy "I'll be the seeker! You guys hide!"
+    c grin "No cheating, okay? Proper hide and seek. Ghost rules."
+    my talk "Cole, you are {i}not{/i} seeking anyone."
+    c happy "Too late! Sixty!"
+    "Cole announces, closing his eyes. You can hear his grin as he counts, loud and clear."
+    l worry "What—wait—"
+    c happy"Fifty-nine! Fifty-eight!"
+    "Lillia scrambles to her feet."
+    l worry "I didn’t agree to this!"
+    "Chairs scrape. You sit on the floor, still in fearful shock."
+    c "Fourty-nine!"
+    "Cole moved the planchette himself... {i}right{/i}?"
+    "Ghosts most definitely aren't real. Right?"
+    c "Fourty-one! Fourty! Thirty-nine!"
+    "You look up, and your eyes land on Akira. While everyone else went to go hide, Akira is frozen in place, hand and eyes still glued on the planchette."
+
+    menu:
+            "HIDE WITH AKIRA.":
+                jump hide_akira
+            "STAY WITH COLE.":
+                jump stay_cole
+
+    label hide_akira:
+        "You grab Akira's wrist frantically."
+        mi "Come on. We’ll go this way."
+
+        scene black with fade
+        "You and Akira sneak away quietly, hearts pounding."
+
+        "You slip into a narrow storage room off the hall. You ease the door shut, leaving only a thin crack of light."
+
+        # music switch
+        play music "audio/music/contemplation.ogg" fadein 1.0
+
+        scene ak00 with fade
+        "You look to your side; Akira sits beside you."
+        "The tension is palpable. Dust hangs in the air, illuminated by the faint light. You can hear Cole in the distance, faintly counting."
+        c "…Twenty-eight! Twenty-seven!"
+        scene ak01
+        a "M-Mia… do you think it’s really real?"
+        scene ak02
+        "You scoff."
+        mi "Of course not. It’s just a game. Cole’s probably just fucking with us."
+        "You laugh nervously, trying to convince both Akira and yourself."
+        mi "He's good at that."
+        scene ak05
+        a "Y-Yeah… I guess you’re right."
+        scene ak03
+        "You both sit in silence, the seconds stretching on."
+        c "…Nineteen!"
+        scene ak04
+        a "Hey, um... I'm sorry."
+        scene ak02s
+        "You blink."
+        mi "For what?"
+        scene ak01
+        a "For being here. I mean, I know you probably didn’t want me to come on this trip."
+        scene ak02
+        mi "Akira… don’t be an idiot. You quite literally {i}carried{/i} me through Calc II last semester."
+        scene ak04
+        a "Well... you didn't have to invite me. Everyone else knows each other. I don’t belong here."
+        scene ak02
+        mi "I {i}wanted{/i} to invite you. I hope it's not hard to believe that I actually {i}enjoy{/i} having you around, Akira."
+        mi "Besides, with the assignments that Professor Tompkins gave us, I think we both have a trauma bond now."
+        scene ak03
+        "Akira chuckles softly, the tension easing slightly."
+        scene ak05
+        a "Y-Yeah… I guess we do."
+        scene ak03
+        c "Seven! Six!"
+        mi "Whether you like it or not, I'm inducting you into my friend group. No take-backs."
+        c "...Three! Two! One!"
+        c "Ready or not, here I come!"
+        "The sound of his footsteps retreats down the hall, careless and eager."
+        "There’s a pause. Somewhere, a door slams. Cole’s voice echoes distantly."
+        "Akira's fingers curl against the hard wood of the storage room floor as he whispers to you."
+        a "Do you think we picked a good enough hiding spot?"
+        a "I-I feel like… a storage closet is pretty {i}obvious{/i}."
+        mi "Ehh, I think we’re fine. Cole’s an airhead, anyways. I think Lils or Bel will be found first."
+        "The scream rips through the house, piercing through your ears."
+        "Pained. Panicked. {i}Wrong{/i}."
+        "You bolt upright from your slouched position on the floor, but before either of you can get up to run out of the closet— something in the air shifts."
+
+        scene black
+        "The lights go out. And then... that's when you hear it."
+        "Footsteps press against the floorboards—slow, uneven. Too heavy on one step, dragging slightly on the next, like whatever’s walking hasn’t quite learned how yet."
+        "There’s a faint wet sound, a soft {i}thud—scrape—thud{/i} that doesn’t match the rhythm of a person."
+        "You’ve known Cole since high school. You know his mannerisms like the back of your hand; Cole loved to sneak over to Bel during sleepovers and scare the shit out of Bel, and even then, his footsteps were clean. Clumsy, loud, and ever so Cole-coded."
+        "But this? Whatever was walking in the house now… was {i}not{/i} Cole."
+        "Akira’s breath hitches. You clamp a hand over your mouth before the gasp even has a change to escape-- because you can hear it. The footsteps— they’re growing closer."
+        "Each step seems to bend reality around itself, warping the silence until you were almost choking on it. Tears pricked at the corners of your eyes."
+        "The steps pause just outside the closet. Your heart hammers so hard she’s sure it can be heard. You press your forehead to Akira’s shoulder. You start to hold your breath."
+
+        # HEARTBEAT MINIGAME
+
+        play music "audio/music/heartbeat.ogg" fadein 1.0
+        # if win: continue
+        # win == no losses
+        # if lose: return
+
+        "But then... whatever it was passes."
+        "Eventually, the sound of its steps drift down the hall, growing quieter, until it dissolving into nothing."
+
+        scene ak10
+        "The lights snap back on."
+        scene ak12
+        a "A-Are you okay? What... {i}what was that{/i}?"
+        scene ak11
+        mi "I-I don't know, but... {i}that wasn’t Cole{/i}."
+
+
+
+
+        jump after_choice
+
+    label stay_cole:
+        mi "Go... go hide, Akira."
+        return
+
+    label after_choice:
+        "Everyone shifts uneasily."
+        return
+
+
+
+
 
     # This ends the game.
 
